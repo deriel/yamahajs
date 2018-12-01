@@ -12,7 +12,7 @@ module.exports = {
     if(module.exports.logging) {
       module.exports.socket.on('connection', (e) => { console.log("YAMAHA: Socket connected", e); });
       module.exports.socket.on('close', (e) => { console.log("YAMAHA: Socket closed", e); });
-      module.exports.socket.on('data', (e) => { console.log("YAMAHA: Data:", e)});
+      module.exports.socket.on('data', (e) => { console.log("YAMAHA: Data:", e.toString())});
       module.exports.socket.on('drain', (e) => { console.log("YAMAHA: Drain:", e)});
       module.exports.socket.on('error', (e) => { console.log("YAMAHA: Error:", e)});
       module.exports.socket.on('end', (e) => { console.log("YAMAHA: End:", e)});
