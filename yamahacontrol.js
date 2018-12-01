@@ -2,7 +2,7 @@ const net = require('net');
 
 let socket = {};
 module.exports = {
-  listeners: [];
+  listeners: [],
   socket: {},
   logging: true,
   initiated: false,
@@ -23,7 +23,7 @@ module.exports = {
     for(var i in module.exports.listeners) {
       module.exports.socket.on(module.exports.listeners[i].e, module.exports.listeners[i].cb);
     }
-  }
+  },
   connect: (ip) => {
     if(!module.exports.initiated) {
       module.exports.init();
@@ -36,13 +36,13 @@ module.exports = {
     if(module.exports.localPort) {
       opts.localPort = module.exports.localPort;
     }
-    socket.connect(opts);
-  }
+    module.exports.socket.connect(opts);
+  },
   send: (msg) => {
     module.exports.socket.write(msg+"\n");
-  }
+  },
   on: (e, cb) => {
-    listeners.push({e, cb});
+    module.exports.listeners.push({e, cb});
     module.exports.socket.on(e, cb);
-  }
+  },
 }
